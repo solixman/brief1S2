@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouQuiz/Quiz_page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<style>
+    #btns {
+        display: grid;
+        height: fit-content;
+        gap: 3vh;
+        width: 25vw;
+    }
+
+    #ans {
+        display: flex;
+    }
+    #ALL{
+        width: 100vw;
+        display: grid  ;
+        align-items: center;
+        justify-content: center;
+    }
+    #nextbtn{
+        display: flex;
+        justify-content: space-between;
+    }
+    #theScore{
+
+        color: cadetblue;
+        font-size: 7vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #yourscore{
+
+color: cadetblue;
+font-size: 7vw;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+</style>
+
+<body>
+    <div id="ALL" class="container">
+        <div>
+            <h5>chose the right answer</h5>
+        </div>
+        <div>
+            <p id="question">Ttst</p>
+        </div>
+        <div>
+
+            <div id="btns" class="btn-group" role="group" aria-label="Vertical button group">
+                <input type="radio" class="btn-check" id="btnradio1" name="btnradio" autocomplete="off"
+                    onchange="selectAnswer(0)">
+                <label class="btn btn-primary" for="btnradio1"
+                    style="--bs-btn-padding-y: 1.25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1.5rem;">
+                    <p id="answer1"></p>
+                </label>
+
+                <input type="radio" class="btn-check" id="btnradio2" name="btnradio" autocomplete="off"
+                    onchange="selectAnswer(1)">
+                <label class="btn btn-primary" for="btnradio2"
+                    style="--bs-btn-padding-y: 1.25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1.5rem;">
+                    <p id="answer2"></p>
+                </label>
+
+                <input type="radio" class="btn-check" id="btnradio3" name="btnradio" autocomplete="off"
+                    onchange="selectAnswer(2)">
+                <label class="btn btn-primary" for="btnradio3"
+                    style="--bs-btn-padding-y: 1.25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1.5rem;">
+                    <p id="answer3"></p>
+                </label>
+
+                <input type="radio" class="btn-check" id="btnradio4" name="btnradio" autocomplete="off"
+                    onchange="selectAnswer(3)">
+                <label class="btn btn-primary" for="btnradio4"
+                    style="--bs-btn-padding-y: 1.25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1.5rem;">
+                    <p id="answer4"></p>
+                </label>
+            </div>
+
+        </div>
+        <div id="nextbtn">
+            <button onclick="previous()" type="button" class="btn btn-dark"><p id="previous">previous Question</p></button>
+            <button onclick="next()" type="button" class="btn btn-dark"><p id="next/score">Next Question</p></button>
+            
+        </div>
+    </div>
+
+
+    <div>
+        <h3 id="yourscore"></h3>
+        <h3 id="theScore"></h3>
+    </div>
+
+    <script>
+        var questions = [
+            {
+                question: "what is the largest country?",
+                answers: [
+                    { text: "monaco", correctAnswer: false },
+                    { text: "russia", correctAnswer: false },
+                    { text: "canada", correctAnswer: true },
+                    { text: "USA", correctAnswer: false },
+                ]
+            },
+            {
+                question: "what's my name?",
+                answers: [
+                    { text: "soulayman", correctAnswer: true },
+                    { text: "brahim", correctAnswer: false },
+                    { text: "tayeb", correctAnswer: false },
+                    { text: "hamid", correctAnswer: false },
+                ]
+            },
+            {
+                question: "what is the largest country",
+                answers: [
+                    { text: "monaco", correctAnswer: false },
+                    { text: "russia", correctAnswer: false },
+                    { text: "canada", correctAnswer: true },
+                    { text: "USA", correctAnswer: false },
+                ]
+            },
+            {
+                question: "what is the largest country",
+                answers: [
+                    { text: "monaco", correctAnswer: false },
+                    { text: "russia", correctAnswer: false },
+                    { text: "canada", correctAnswer: true },
+                    { text: "USA", correctAnswer: false },
+                ]
+            },
+            {
+                question: "what is the largest country",
+                answers: [
+                    { text: "monaco", correctAnswer: false },
+                    { text: "russia", correctAnswer: false },
+                    { text: "canada", correctAnswer: true },
+                    { text: "USA", correctAnswer: false },
+                ]
+            },
+            {
+                question: "what is the largest country",
+                answers: [
+                    { text: "monaco", correctAnswer: false },
+                    { text: "russia", correctAnswer: false },
+                    { text: "canada", correctAnswer: true },
+                    { text: "USA", correctAnswer: false },
+                ]
+            },
+            {
+                question: "what is the largest country",
+                answers: [
+                    { text: "monaco", correctAnswer: false },
+                    { text: "russia", correctAnswer: false },
+                    { text: "canada", correctAnswer: true },
+                    { text: "USA", correctAnswer: false },
+                ]
+            },
+            {
+                question: "what is the largest country",
+                answers: [
+                    { text: "monaco", correctAnswer: false },
+                    { text: "russia", correctAnswer: false },
+                    { text: "canada", correctAnswer: true },
+                    { text: "USA", correctAnswer: false },
+                ]
+            },
+            {
+                question: "what is the largest country",
+                answers: [
+                    { text: "monaco", correctAnswer: false },
+                    { text: "russia", correctAnswer: false },
+                    { text: "canada", correctAnswer: true },
+                    { text: "USA", correctAnswer: false },
+                ]
+            },
+            {
+                question: "what is the tallest building",
+                answers: [
+                    { text: "aifell tower", correctAnswer: false },
+                    { text: "tower alarabia", correctAnswer: false },
+                    { text: "the leaning tower of piza", correctAnswer: true },
+                    { text: "khalifa tower", correctAnswer: false },
+                ]
+            },
+
+        ];
+        let S = [];
+        var counter = 0;
+
+
+        const qst = document.getElementById("question");
+        const A1 = document.getElementById("answer1");
+        const A2 = document.getElementById("answer2");
+        const A3 = document.getElementById("answer3");
+        const A4 = document.getElementById("answer4");
+
+        qst.innerHTML = questions[counter].question;
+        A1.innerText = questions[counter].answers[0].text;
+        A2.innerText = questions[counter].answers[1].text;
+        A3.innerText = questions[counter].answers[2].text;
+        A4.innerText = questions[counter].answers[3].text;
+        
+
+        function next() {
+            if (counter < questions.length - 1) {
+                counter++;
+                nextQ();
+            }
+
+            else {
+                hide();
+                nextQ();
+
+            }
+        }
+        function previous() {
+            if (counter < questions.length - 1) {
+                counter--;
+                nextQ();
+            }
+
+            else {
+                hide();
+                nextQ();
+
+            }
+        }
+        function nextQ() {
+            if(counter === questions.length ){
+                showscore();
+                return;
+            }
+
+            const qst = document.getElementById("question");
+            const A1 = document.getElementById("answer1");
+            const A2 = document.getElementById("answer2");
+            const A3 = document.getElementById("answer3");
+            const A4 = document.getElementById("answer4");
+
+            qst.innerHTML = questions[counter].question;
+            A1.innerText = questions[counter].answers[0].text;
+            A2.innerText = questions[counter].answers[1].text;
+            A3.innerText = questions[counter].answers[2].text;
+            A4.innerText = questions[counter].answers[3].text;
+            if (counter === questions.length - 1) {
+                document.getElementById("next/score").innerText = "Show Score";
+                counter++;
+            }
+        }
+
+        function hide() {
+            var x = document.getElementById("ALL");
+            x.style.display = "none";
+        }
+
+
+        function SCORE() {
+            let Stotal = 0;
+            for (let i = 0; i < questions.length; i++) {
+                if (S[i] === true) {
+                    Stotal++;
+                }
+            } return Stotal;
+        }
+        function showscore() {
+            let Stotal = SCORE();
+            document.getElementById("theScore").innerText = Stotal;
+            document.getElementById("yourscore").innerText = "your score is";
+            
+        }
+
+        function selectAnswer(Index) {
+            const correctAnswer = questions[counter].answers[Index].correctAnswer;
+            S[counter] = correctAnswer;
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
